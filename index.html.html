@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="vi" translate="no" class="notranslate"><head><meta charset="utf-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ôn thi giữa kì 1 – English 11</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1d2433;--mu:#667085;--bd:#dfe3ec;--ac:#2f5bea;--ok:#1b8a4b;--okb:#e3f6ea;--no:#c0392b;--nob:#fdeaea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151d;--card:#1b2030;--tx:#e8ebf3;--mu:#98a2b8;--bd:#2c3347;--ac:#7b9bff;--ok:#5fd58f;--okb:#17352a;--no:#ff8a7a;--nob:#3a2022}}
+#test{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}#test textarea,#test input{-webkit-user-select:text;user-select:text}html{font-size:16px}small{font-size:1rem}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:1rem/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.w{max-width:860px;margin:0 auto;padding:16px}
+h1{font-size:1.3rem;margin:4px 0 2px}.sub{color:var(--mu);font-size:1rem;margin:0 0 12px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:8px}
+.tabs button{flex:0 0 auto;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 14px;border-radius:999px;cursor:pointer;font-size:1rem}
+.tabs button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.bar{display:flex;justify-content:space-between;align-items:center;margin:10px 0;color:var(--mu);font-size:1rem}
+.bar button,.rv{font:inherit;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;padding:6px 12px;cursor:pointer}
+.rule{background:var(--card);border-left:4px solid var(--ac);padding:8px 12px;border-radius:6px;margin-bottom:12px;font-weight:600;font-size:1rem}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.q p{margin:0 0 8px}.n{color:var(--ac);font-weight:700;margin-right:4px}
+.o{display:block;width:100%;text-align:left;border:1px solid var(--bd);background:transparent;color:var(--tx);border-radius:10px;padding:10px 12px;margin-top:8px;cursor:pointer;font:inherit}
+.o:hover:not(:disabled){border-color:var(--ac)}.o.ok{background:var(--okb);border-color:var(--ok);color:var(--ok)}.o.no{background:var(--nob);border-color:var(--no);color:var(--no)}
+textarea{width:100%;min-height:64px;border:1px solid var(--bd);border-radius:8px;background:transparent;color:var(--tx);padding:8px;font:inherit}
+.ex{margin-top:8px;padding:8px 10px;border-radius:8px;font-size:1rem;border:1px solid var(--bd);line-height:1.5}.ex.y{background:var(--okb);border-color:var(--ok)}.ex.n{background:var(--nob);border-color:var(--no)}.ans .ex{color:var(--tx);font-weight:400;background:transparent}.ans{display:none;margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--okb);color:var(--ok);font-weight:600}
+.pas{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:4px 14px;margin-bottom:12px;font-size:1rem}.pas p{margin:8px 0}.pas h3{margin:10px 0 0;font-size:1rem}
+.st{max-width:680px;margin:6vh auto}.st label{display:block;margin:8px 0 4px}.o.sel{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac)}.tb{border:0;background:var(--ac);color:#fff;border-radius:8px;padding:9px 16px;cursor:pointer;font:inherit;font-weight:600;margin:6px 6px 0 0}.tb.g{background:var(--card);color:var(--tx);border:1px solid var(--bd)}.nm{width:100%;border:1px solid var(--bd);border-radius:8px;padding:8px;background:transparent;color:var(--tx);font:inherit;margin-bottom:10px}.sc{position:sticky;bottom:0;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 14px;margin-top:12px;text-align:center;font-weight:600}
+</style></head><body><div class="w">
+<h1>Ôn thi giữa kì 1 – English 11</h1>
+<p class="sub">Có thêm tab 🎯 Kiểm tra 10 điểm (đề ngẫu nhiên) ngẫu nhiên. Bấm chọn đáp án để thấy đúng/sai và giải thích ngay. Điểm được tính theo từng phần.</p>
+<div class="tabs" id="tabs"></div>
+<div id="main"><div class="bar"><span id="prog"></span><button id="reset">Làm lại phần này</button></div>
+<div id="rule" class="rule"></div><div id="pass"></div><div id="list"></div>
+<div class="sc" id="sc"></div></div><div id="test" class="notranslate" translate="no" hidden></div></div>
+<script>
+const P=(t,r,s,p)=>({t,r,p,q:s.trim().split("\n").map(l=>l.split("|"))});
+const D=[
+P("Grammar","Choose the correct answer: tenses, modals, linking verbs",`
+While we were having dinner at a restaurant, someone came to the house and ___ this note.|left|had left|was left|was leaving|A
+She said she met you once at the Hilton last year. ___ since then?|Have you met her|Did you meet her|Were you met her|Had you met her|A
+“How’s Peter doing?” “I don’t know. I ___ from him for months.”|have to hear|haven’t heard|didn’t hear|don’t hear|B
+Their children ___ lots of new friends since they ___ to that town.|have made – moved|were making – have moved|made – are moving|made – have been moving|A
+There ___ great changes in our village in the past few years.|have been|had been|was|has been|A
+The noise from the trains ___ me terribly last night.|was annoyed|annoyed|has annoyed|had annoyed|B
+After he had finished his English course, he ___ to England to continue his study.|goes|went|has gone|was going|B
+When I ___ to visit her last night, she was having a bath.|was coming|came|has come|had come|B
+John ___ in the same house since he left school.|lived|had lived|was living|has lived|D
+I had prepared dinner before I ___ to work.|went|was going|had gone|is going|A
+Our family is going to travel abroad this summer, so we ___ get our passport soon.|ought to|have to|must|should|B
+Students ___ look at their notes during the test.|don’t have to|shouldn’t|mustn’t|ought not to|C
+You ___ find time for some relaxation every day.|have to|must|should|might|C
+Each generation is likely to have different thoughts about how the family ___ interact.|should|must|have to|could|A
+All the students ___ obey the school rules.|must|ought to|should|have to|A
+My back has been hurting for weeks. I ___ go to the doctor’s.|don’t have to|have to|mustn’t|must|D
+My family ___ pay a lot of taxes every year.|should|has to|must|ought to|B
+The local authority is really strict about protecting that lawn. You ___ walk around it.|mustn’t|ought not to|shouldn’t|don’t have to|A
+It is a great party but I ___ go now.|should|have to|must|ought to|B
+Sometimes parents ___ be tolerant of their children’s childlike behaviours.|should|must|have to|mustn’t|A
+The little boy looks ___ because he gets good grades in the exam.|happy|unhappy|happily|unhappily|A
+I had been waiting for my friends and suddenly they appeared ___ at the end of the path.|noise|noisy|noisily|quiet|C
+The street appears ___ now because there is so much traffic in the rush hour.|quiet|noisy|noisily|quietly|B
+His girlfriend ___ gentle and independent.|acts|seems|says|look|B
+Your parents appear ___ with you, but also very fair.|strictly|strict|strictness|open-minded|B
+We should eat more vegetables and fruits to stay ___.|health|healthy|unhealthy|healthily|B
+Can you help me? I ___ for my pen now.|look|am looking|looked|was looking|B
+At present, I ___ calm.|remain|remained|is remaining|was remaining|A
+To decide the winner, the examiners ___ candidates’ dishes now.|taste|tasted|are tasting|was tasting|C
+Listen! Her story ___ interesting.|sounds|is sounding|sound|was sounding|A`),
+P("Vocabulary","Choose the correct answer: vocabulary, collocations, prepositions",`
+Don’t forget to drink lots of water and stay ___ with plenty of exercise.|inactive|active|awake|still|B
+To have a long, healthy life, you need a good level of ___.|intelligence|activities|weight|fitness|D
+It’s also important to eat a ___ diet with lots of fruits, vegetables and protein.|balanced|unhealthy|poor|strict|A
+Early sleep helps us manage our feelings and avoid ___ too stressed.|get|to get|getting|got|C
+I prefer fruits and vegetables ___ fast food and junk food.|of|for|than|to|D
+Just 15 minutes of daily ___ can add three more years of life.|smoking|reading|routines|exercise|D
+You shouldn’t drink too much coffee ___ they can make it harder for you to sleep.|because|because of|although|despite|A
+She got enough sleep last night, so today she is full of ___.|exercise|energy|injuries|stress|B
+We spent a lot of time ___, doing the gardening and walking in the parks.|cooked|cook|cooking|to cook|C
+The office has a gym for those who like to ___ exercise in their lunch hour.|take|put|make|give|A
+The key ___ a healthy body is diet and exercise.|for|with|to|by|C
+We should ___ healthy by eating well and exercising regularly.|sound|seem|look|stay|D
+___ fruit and vegetables form an important part of a healthy diet.|Raw|Fresh|Frozen|Cooked|B
+We ___ our 25th wedding anniversary in Florence.|celebrated|memorized|remembered|organized|A
+This exercise is designed to build the shoulder and back ___.|skin|bones|flesh|muscles|D
+The ___ refers to the difference in attitudes between a younger generation and an older one.|argument|generation gap|conflict|disagreement|B
+Living with three or four generations can be frustrating because of the lack of space and daily ___.|arguments|debates|conflicts|quarrel|C
+He shared his father’s ___ that people should work hard for their living.|belief|gap|arguments|complaint|A
+Parents can’t always respond effectively to aggressive ___ of their children.|generation|thought|behaviour|roles|C
+She works in television, following ___ her father’s footsteps.|with|on|in|of|C
+My parents ___ us advice, but never force us to do what they want.|give|follow|provide|take|A
+My grandparents encourage me to ___ my dream to become an engineer.|quit|follow|improve|awake|B
+I deeply respect David ___ what he has achieved.|for|about|of|to|A
+She found herself ___ conflict with her parents over her future career.|in|out|for|on|A
+Everyone was ___ towards him, listening carefully to his long explanations.|respected|respective|respectable|respectful|D
+Breadwinning and childcare are the ___ roles of men and women in society.|respecting|respective|respectable|respectful|B
+Julie and Mark are aged 17 and 19 ___.|respectingly|respectively|respectably|respectfully|B
+He ranked first in the English speaking contest. It was a perfectly ___ result.|respecting|respective|respectable|respectful|C
+Parents are pleased when their children know how to be ___ to others.|frustrating|responsible|respectful|studious|C
+If you are part of an ___, you may live with grandparents, aunts and uncles.|generation gap|extended family|nuclear family|blended family|B
+This is a ‘green city’ designed to reduce its negative ___ on the environment.|impact|result|impression|force|A
+More than fifty percent of it is made up ___ green areas.|on|from|of|for|C
+Most people will use public ___ such as trams and electric buses.|places|technology|transport|system|C
+Some people think there will be ___ traffic jams and less pollution.|much|many|less|fewer|D
+City ___ will stop using their cars in urban areas.|dwellers|governments|authorities|researchers|A
+It seems a good solution ___ many environmental problems.|for|to|of|in|B
+In smart cities, AI technologies will help the city ___ more efficiently.|exhibit|design|operate|impress|C
+The modern infrastructure looks beautiful. I’m really ___ with the high-rise buildings.|impress|impressed|impressive|impressionable|B
+Tall buildings can limit the ___ of the built environment and help solve housing problems.|greenhouse|heat|effect|carbon footprint|D
+Traffic jams are the city’s biggest problem, especially during ___.|rush hour|peak season|crisis|pandemic|A`),
+P("Synonyms","Choose the word(s) CLOSEST in meaning to the underlined word(s)",`
+The balance between work and life protects people from the negative [effects] of stress.|reasons|impacts|causes|symptoms|B
+Research shows that the food we eat can affect [longevity].|health|protection|length|life span|D
+I noticed you were looking a little [under the weather]. You coughed a lot.|sleepy|unhappy|healthy|ill|D
+Open communication can [bridge] the gap between parents and children.|accept|increase|widen|shorten|D
+I deeply [look up to] David for what he has achieved.|respect|see|disrespect|force|A
+Our lives have changed a lot since computers [came on the scene].|disappeared|developed|seen|arrived|D`),
+P("Antonyms","Choose the word(s) OPPOSITE in meaning to the underlined word(s)",`
+Screens of electronic devices [give off] blue light.|release|absorb|emit|discharge|B
+I noticed you were looking a little [under the weather]. You coughed a lot.|as pale as a ghost|green around the gills|off color|in the pink|D
+We greatly [respect] my teacher for all the best things she brought to us.|look up to|look forwards|look for|look down on|D
+She had very little office experience, so the company wouldn’t [take on] her.|fire|hire|employ|interview|A`),
+P("Reading 1","Ex 7: Read the passage and choose the best answer",`
+According to the passage, who is Hatha Yoga best suited to?|People who want to build strength|Yoga beginners|Elderly people|People who love gyms|B
+The word [alleviating] in paragraph 2 is closest in meaning to ___.|worsening|reducing|causing|spreading|B
+Which benefit is NOT mentioned in the passage?|Improved flexibility|Stronger muscles|Better circulation|Weight loss|D
+Why might lifting weights alone be a problem?|It is too expensive|It can reduce flexibility|It causes arthritis|It lowers happiness|B
+According to the passage, regular yoga practice can ___.|improve mood and immune function|replace all other sports|make you taller|cure back pain at once|A`,
+`<h3>HEALTH BENEFITS OF YOGA</h3><p>Yoga is a healthy lifestyle. One of the benefits of yoga is that you can choose a yoga style that is suitable for your lifestyle, such as hot yoga, power yoga, relaxation yoga, etc. If you are a yoga beginner, Hatha Yoga, which focuses on basic postures at a comfortable pace, would be great for you. If you want to increase strength through using more of your own body’s resistance, Power Yoga may be right for you. Whether you prefer to practise at home, in a private session, watching a DVD or at a studio or gym, there are a huge variety of options available to suit your goals and needs.</p><p>Improved flexibility is one of the first and most obvious benefits of yoga. During your first class, you probably won’t be able to touch your toes. But if you stick with it, you’ll notice a gradual loosening, and eventually, seemingly impossible poses will become possible. Each of the yoga poses is built to reinforce the muscles around the spine, the very center of your body, which is the core from which everything else operates. When the core is working properly, posture is improved, thus <u>alleviating</u> back, shoulder, and neck pain.</p><p>Strong muscles do more than look good. They also protect us from conditions like arthritis and back pain, and help prevent falls in elderly people. And when you build strength through yoga, you balance it with flexibility. If you just went to the gym and lifted weights, you might build strength at the expense of flexibility.</p><p>Yoga gets your blood flowing. More specifically, the relaxation exercises you learn in yoga can help your circulation, especially in your hands and feet. Yoga also gets more oxygen to your cells, which function better as a result. Twisting poses are thought to wring out venous blood from internal organs and allow oxygenated blood to flow in once the twist is released.</p><p>Many studies found that a consistent yoga practice improved depression and led to greater levels of happiness and better immune function.</p>`),
+P("Reading 2","Ex 7: Read the passage and choose the best answer",`
+What is the main idea of the passage?|Teens keep many secrets|There may not really be a generation gap|Parents cannot understand teens|Teenagers are always angry|B
+The word [them] in paragraph 3 refers to ___.|parents|teens|stereotypes|differences|B
+According to the survey, what do most teens think their parents see as the No. 1 priority?|Work|Money|Family|Education|C
+What do more than a third of teens keep secret in their rooms?|Something harmful|Something as harmless as a diary or a CD|Money|Their homework|B
+According to the passage, most kids in the 1960s and 1970s ___.|hated their parents|shared their parents’ basic values|ran away from home|ignored family life|B`,
+`<h3>IS THERE REALLY A GENERATION GAP?</h3><p>According to the results of a survey in USA WEEKEND Magazine, there isn’t really a generation gap. The magazine’s “Teens &amp; Parents” survey shows that today’s generation of young people generally get along well with their parents and appreciate the way they’re being raised. Most feel that their parents understand them, and they believe their parents consider family as the No. 1 priority in their lives. Although more than a third of teens have something in their rooms they would like to keep secret from their parents, it is usually nothing more harmful than a diary or a CD.</p><p>Such results may seem surprising in the context of the violent events that people hear about in the media. Maybe because of the things they hear, parents worry that their own kids might get out of control once they reach the teenage years. However, the facts in the survey should make us feel better. The survey shows us that today’s teens are loving and sensible. They are certainly happier than the angry people in the teenage stereotypes we all know about. True, some teenagers are very angry, and we need to recognize their needs, but the great majority of teens are not like that at all.</p><p>In contrast to some stereotypes, most teens believe they must be understanding about differences among individuals. Many of <u>them</u> volunteer for community service with disadvantaged people. When they talk about themselves, their friends and their families, they sound positive and proud. Generally, these are very nice kids.</p><p>Is this spirit of harmony a change from the past? Only a generation ago, parent-child relations were described as the “generation gap”. Yet even then, things were not so bad. Most kids in the 1960s and 1970s shared their parents’ basic values.</p><p>Perhaps, however, it is true that American families are growing closer at the beginning of this new millennium. Perhaps there is less to fight about, and the dangers of drug abuse and other unacceptable behavior are now well known. Perhaps, compared to the impersonal world outside the home, a young person’s family is like a friendly shelter, not a prison. And perhaps parents are acting more like parents than they did 20 or 30 years ago.</p>`),
+P("Cloze 1","Ex 8: Choose the best answer that fits each gap",`
+Gap (1): too many of us take ___ the wrong sport|up|in|off|away|A
+Gap (2): those ___ like to be with other people|who|which|whom|whose|A
+Gap (3): ___, you may prefer to go jogging or swimming|Therefore|Moreover|Alternatively|Besides|C
+Gap (4): if ___ isn’t important to you|compete|competition|competitive|competitor|B
+Gap (5): dancing can be an enjoyable ___ without the need to show you’re better|alternative|habit|result|equipment|A`,
+`<p>Everyone knows that exercise is good for the body and the mind. We all want to keep fit and look good, but too many of us take <b>(1)</b> ___ the wrong sport and quickly lose interest. So now fitness experts are advising people to choose an activity that matches their character.</p><p>For instance, those <b>(2)</b> ___ like to be with other people often enjoy golf or squash, or playing for a basketball, football or hockey team. <b>(3)</b> ___, you may prefer to go jogging or swimming if you’re happier on your own.</p><p>Do you like competition? Then try something like running, or a racket sport such as tennis. If, on the other hand, <b>(4)</b> ___ isn’t important to you, then activities like dancing can be an enjoyable <b>(5)</b> ___ without the need to show you’re better than everyone else.</p><p>Finally, think about whether you find it easy to make yourself do exercise. If so, sports like weight training at home and cycling are fine. If not, book a skiing holiday, Taekwondo lessons, or a tennis court. You’re much more likely to do something you’ve already paid for!</p>`),
+P("Cloze 2","Ex 8: Choose the best answer that fits each gap",`
+Gap (1): ___ can be done by improving existing infrastructure|which|what|who|that|A
+Gap (2): more public ___ that are both beautiful and green|space|spaces|spacious|spacing|B
+Gap (3): a model for ___ cities to follow|another|other|others|the other|B
+Gap (4): ___, it will be a zero waste city|In addition|However|Although|Despite|A
+Gap (5): ___ friendly areas to be tested|environment|environmental|environmentally|environmentalist|C`,
+`<h3>CITIES GOING GREEN</h3><p>As more and more people concentrate in cities, planners are looking for ways to transform cities into better living spaces, <b>(1)</b> ___ can be done by improving existing infrastructure while also creating more public <b>(2)</b> ___ that are both beautiful and green. This can be hard to accomplish, especially in cities with a haphazard fashion. Some cities have been created with the idea of a green city as the goal. One such city, Masdar City in the United Arab Emirates, aims to become a model for <b>(3)</b> ___ cities to follow. It is being known as a truly green city that relies strictly on renewable sources such as solar energy to provide all of its energy needs. <b>(4)</b> ___, it will be a zero waste city in which everything that is used can be recycled. Whether it will truly accomplish its goal remains to be seen, but it will also act as an experiment for <b>(5)</b> ___ friendly areas to be tested.</p>`),
+{t:"Writing",r:"Rewrite the sentences / build sentences from the cues, then check the model answer",w:1,h:["We haven’t","She hasn’t","I have","My father has","She","The Browns began","You","We","We","We","Young people","Residents in this city","Teenagers","I haven’t","My grandparents","Students","You","I haven’t","City dwellers","You","They haven’t","We haven’t","You","She hasn’t","My grandmother has","Parents","My sister hasn’t","They have","Teenagers","The government","Lan hasn’t","Drivers"],q:[
+["We last saw Tom when we moved to Bristol.","We haven’t seen Tom since we moved to Bristol."],
+["She last wrote to me nearly 2 years ago.","She hasn’t written to me for nearly 2 years."],
+["The last time I played football was in 2022.","I have not played football since 2022."],
+["The last time my father went to Vung Tau was 2 years ago.","My father has not been to Vung Tau for 2 years."],
+["She started working as a secretary 2 years ago.","She has worked as a secretary for 2 years."],
+["The Browns have lived in London for 20 years.","The Browns began living in London 20 years ago."],
+["It is better for you to talk to your parents about your problem.","You should talk to your parents about your problem."],
+["It is a good idea for us to learn vocabulary every day.","We should learn vocabulary every day."],
+["It is not necessary for us to wear uniforms every day.","We don’t have to wear a uniform every day."],
+["We aren’t allowed to drive without wearing a helmet.","We mustn’t drive without wearing a helmet."],
+["It is necessary for young people to plan their future career carefully.","Young people have to plan their future career carefully."],
+["Residents in this city are strictly forbidden to engage in any illegal religious activities.","Residents in this city mustn’t engage in any illegal religious activities."],
+["It is not a good idea for teenagers to spend too much time on social media.","Teenagers shouldn’t spend too much time on social media."],
+["The last time I had a medical check-up was in March.","I haven’t had a medical check-up since March."],
+["My grandparents began living with us 10 years ago.","My grandparents have lived with us for 10 years."],
+["Students are not allowed to use phones during the exam.","Students mustn’t use phones during the exam."],
+["It is not necessary for you to buy a new bike.","You don’t have to buy a new bike."],
+["I last ate fast food two months ago.","I haven’t eaten fast food for two months."],
+["It is better for city dwellers to use public transport.","City dwellers should use public transport."],
+["It is strictly forbidden to park here.","You mustn’t park here."],
+["The last time they visited their hometown was five years ago.","They haven’t visited their hometown for five years."],
+["We last had a family reunion when my grandfather retired.","We haven’t had a family reunion since my grandfather retired."],
+["It is a good idea for you to eat more fresh fruit and vegetables.","You should eat more fresh fruit and vegetables."],
+["The last time she did yoga was three months ago.","She hasn’t done yoga for three months."],
+["My grandmother started doing morning exercise in 2015.","My grandmother has done morning exercise since 2015."],
+["It is not a good idea for parents to compare their children with other children.","Parents shouldn’t compare their children with other children."],
+["The last time my sister argued with our parents was last summer.","My sister hasn’t argued with our parents since last summer."],
+["They became close friends five years ago.","They have been close friends for five years."],
+["Teenagers are not allowed to stay out after 10 p.m.","Teenagers mustn’t stay out after 10 p.m."],
+["It is a good idea for the government to build more green spaces.","The government should build more green spaces."],
+["The last time Lan travelled by metro was a month ago.","Lan hasn’t travelled by metro for a month."],
+["Drivers are not allowed to park on the pavement.","Drivers mustn’t park on the pavement."],
+["Build a sentence: Children / adolescent / should / eat / sufficient / nutritious / foods / grow / develop normally.","Children and adolescents should eat sufficient nutritious foods to grow and develop normally."],
+["Build a sentence: Although / eat / breakfast / dinner / home / students / usually / have / lunch / school.","Although they eat breakfast and dinner at home, students usually have lunch at school."],
+["Build a sentence: Healthy lunches / important / for / them / because / these / help / concentrate / learning.","Healthy lunches are important for them because these help them concentrate on learning."],
+["Build a sentence: Some / student / usually / have / unhealthy lunch / of / fast food.","Some students usually have an unhealthy lunch of fast food."],
+["Build a sentence: Many / teenager / spend / too / much / time / digital / device.","Many teenagers spend too much time on digital devices."],
+["Build a sentence: Parents / should / strictly / limit / children’s / screen time / because / bad / effect / digital / device.","Parents should strictly limit their children’s screen time because of the bad effects of digital devices."],
+["Build a sentence: Smart / technology / make / our / life / easier / by / reduce / housework.","Smart technology makes our life easier by reducing housework."],
+["Build a sentence: Advanced / technology / have / impact / every / aspect / life.","Advanced technology has an impact on every aspect of life."],
+["Build a sentence: City / dweller / stop / use / private / car / reduce / greenhouse / gas / emission.","City dwellers will stop using private cars to reduce greenhouse gas emissions."],
+["Build a sentence: AI / technology / will / used / help / city / operate / efficient.","AI technology will be used to help the city operate efficiently."]]}
+];
+const E={
+Grammar:`
+Hành động xen vào một hành động đang diễn ra (while + QKTD) → quá khứ đơn: left.
+“once … last year” là quá khứ, nhưng “since then” → hiện tại hoàn thành: Have you met her since then?
+“for months” → hiện tại hoàn thành: haven’t heard.
+“since they moved” (QKĐ) → mệnh đề chính dùng hiện tại hoàn thành: have made.
+“in the past few years” + changes (số nhiều) → have been.
+“last night” → quá khứ đơn; annoy là ngoại động từ, chủ ngữ là tiếng ồn nên dùng chủ động: annoyed.
+After + QKHT (had finished) → mệnh đề sau dùng quá khứ đơn: went.
+Hành động “came” xảy ra khi cô ấy đang tắm; “last night” → quá khứ đơn: came.
+“since he left school” → hiện tại hoàn thành: has lived.
+Hành động trước dùng QKHT (had prepared), hành động sau dùng quá khứ đơn: went.
+“is going to travel … so we ___ get passport” → sự cần thiết do hoàn cảnh bên ngoài: have to.
+“during the test” là quy định cấm tuyệt đối → mustn’t.
+Lời khuyên → should.
+“is likely to have different thoughts” → nói về điều nên làm (khuyên): should.
+Quy định của trường (bổn phận chung) → must.
+“has been hurting for weeks” → sự cần thiết xuất phát từ người nói, cảm nhận cá nhân: must (have to cũng gần nghĩa nhưng đáp án chọn D).
+Chủ ngữ số ít “My family” + nghĩa vụ bắt buộc bên ngoài (thuế) → has to.
+“strict … protecting that lawn” → cấm: mustn’t.
+Người nói phải đi do hoàn cảnh bên ngoài (có việc bận): have to.
+“be tolerant” là lời khuyên cho cha mẹ → should.
+look + tính từ; “gets good grades” → vui: happy.
+Cần trạng từ bổ nghĩa cho “appeared”; “suddenly … at the end of the path” → noisily (ồn ào).
+appear + tính từ; “so much traffic” → ồn ào: noisy.
+seem + tính từ (gentle and independent): seems. (look phải chia “looks”).
+appear + tính từ (strict) đứng song song với “fair”: strict.
+stay + tính từ → healthy.
+“now” → hiện tại tiếp diễn: am looking.
+remain + tính từ (calm) diễn tả trạng thái hiện tại, chủ ngữ I: remain.
+“now” → hiện tại tiếp diễn, chủ ngữ số nhiều: are tasting.
+“Listen!” nhưng sound là động từ nối, không dùng dạng tiếp diễn: sounds interesting.`,
+Vocabulary:`
+trái nghĩa, không hợp: không ai khuyên “stay inactive” ¦ stay active = giữ cơ thể năng động, hợp với “exercise” ¦ awake = thức, không nói về sức khỏe thể chất ¦ still = đứng yên, không hợp nghĩa
+intelligence = trí thông minh, không liên quan thể trạng ¦ activities = hoạt động, không đi với “level of” ¦ weight = cân nặng, không phải “mức độ tốt” ¦ a good level of fitness = mức độ thể lực tốt
+balanced diet = chế độ ăn cân bằng (có đủ rau, đạm) ¦ unhealthy diet trái với ý “important to eat” ¦ poor diet = chế độ ăn nghèo nàn, nghĩa xấu ¦ strict diet = ăn kiêng nghiêm ngặt, không hợp “with lots of fruits…”
+avoid + V-ing, không dùng nguyên mẫu ¦ avoid không đi với to-V ¦ avoid getting stressed = tránh bị căng thẳng ¦ got là quá khứ, sai dạng sau avoid
+prefer … of: sai giới từ ¦ prefer … for: sai giới từ ¦ than dùng với “rather”/so sánh hơn, không dùng sau prefer ¦ prefer A to B = thích A hơn B
+smoking = hút thuốc, làm giảm tuổi thọ ¦ reading không liên quan “thêm 3 năm sống” ¦ routines = thói quen, không rõ nghĩa ở đây ¦ exercise = tập thể dục, tăng tuổi thọ
+because + mệnh đề (they can make it…) ¦ because of + danh từ/cụm danh từ, không dùng trước mệnh đề ¦ although = mặc dù, nghĩa ngược ¦ despite + danh từ, và nghĩa ngược
+exercise = tập luyện, không hợp “full of” ¦ full of energy = tràn đầy năng lượng ¦ injuries = chấn thương, không hợp “enough sleep” ¦ stress = căng thẳng, trái với ngủ đủ
+cooked: sai dạng, không đi với spend time ¦ cook: sai dạng ¦ spend time + V-ing: spend time cooking ¦ to cook: sai cấu trúc
+take exercise = tập thể dục (cụm cố định) ¦ put exercise: không có cụm này ¦ make exercise: không dùng, phải là do/take exercise ¦ give exercise: không có cụm này
+the key for: không dùng ¦ the key with: không dùng ¦ the key to + N = chìa khóa của ¦ the key by: không dùng
+sound healthy = nghe có vẻ khỏe, nói về cảm nhận ¦ seem healthy = có vẻ khỏe, chỉ vẻ ngoài ¦ look healthy = trông khỏe, chỉ vẻ ngoài ¦ stay healthy = giữ gìn sức khỏe, hợp ý “by eating well”
+Raw fruit nhấn mạnh chưa chế biến, không nêu “important part” ¦ Fresh fruit and vegetables = trái cây, rau củ tươi, thành phần quan trọng ¦ Frozen: đông lạnh, kém lành mạnh hơn ¦ Cooked fruit: ít gặp, không hợp ngữ cảnh
+celebrate an anniversary = kỷ niệm ¦ memorize = ghi nhớ (học thuộc) ¦ remember = nhớ lại, không tổ chức lễ ¦ organize = tổ chức, không đi với anniversary theo nghĩa “kỷ niệm”
+skin = da ¦ bones = xương, không “build” như tập tạ ¦ flesh = thịt, ít dùng ¦ build muscles = xây dựng cơ bắp (shoulder and back muscles)
+argument = cuộc tranh cãi ¦ generation gap = khoảng cách thế hệ, khác biệt quan điểm ¦ conflict = mâu thuẫn, không phải “difference in attitudes” ¦ disagreement = sự bất đồng, chung chung
+arguments = tranh cãi, chưa đúng với “daily” ¦ debates = tranh luận học thuật ¦ daily conflicts = mâu thuẫn hằng ngày khi sống chung nhiều thế hệ ¦ quarrel là số ít, thiếu mạo từ nên sai ngữ pháp
+belief = niềm tin, quan điểm ¦ gap = khoảng cách, không hợp “that people should work” ¦ arguments = tranh luận, không phải niềm tin ¦ complaint = lời phàn nàn
+generation = thế hệ ¦ thought = suy nghĩ, không nói “aggressive” ¦ aggressive behaviour = hành vi hung hăng ¦ roles = vai trò, không hợp
+follow with: sai giới từ ¦ follow on: sai giới từ ¦ follow in someone’s footsteps = nối nghiệp ai ¦ follow of: sai giới từ
+give advice = cho lời khuyên ¦ follow advice = làm theo lời khuyên, chủ ngữ ở đây là cha mẹ nên không hợp ¦ provide advice: cũng gần nghĩa nhưng “provide us advice” sai cấu trúc ¦ take advice = nghe theo lời khuyên, nghĩa ngược
+quit a dream = từ bỏ ước mơ, trái nghĩa với “encourage” ¦ follow one’s dream = theo đuổi ước mơ ¦ improve a dream: không hợp ¦ awake: không đi với dream theo nghĩa này
+respect somebody for something = tôn trọng ai vì điều gì ¦ about: sai giới từ ¦ of: sai giới từ ¦ to: sai giới từ
+be in conflict with = mâu thuẫn với ¦ out of conflict: không dùng ¦ for conflict: sai ¦ on conflict: sai
+respected = được tôn trọng, nghĩa bị động ¦ respective = tương ứng ¦ respectable = đáng nể ¦ respectful towards = lễ phép, kính trọng đối với ai
+respecting: không đúng nghĩa ¦ respective roles = vai trò tương ứng của mỗi người ¦ respectable = đáng nể, không hợp ¦ respectful = lễ phép, không hợp
+respectingly: không tồn tại ¦ respectively = lần lượt (17 và 19 theo thứ tự) ¦ respectably = một cách đáng nể ¦ respectfully = một cách lễ phép, không hợp
+respecting: không hợp ¦ respective = tương ứng, không hợp ¦ respectable result = kết quả khá tốt, đáng nể ¦ respectful = lễ phép, không dùng cho kết quả
+frustrating = gây bực bội, không phải phẩm chất để vui lòng ¦ responsible = có trách nhiệm, không đi với “to others” ¦ respectful to others = biết tôn trọng người khác ¦ studious = chăm học
+generation gap = khoảng cách thế hệ ¦ extended family = đại gia đình, sống cùng ông bà, cô chú ¦ nuclear family = gia đình hạt nhân (bố mẹ và con) ¦ blended family = gia đình có con riêng
+impact on = tác động lên ¦ result of: không đi với “negative … on” ¦ impression = ấn tượng, không hợp ¦ force = lực, không hợp
+made up on: sai ¦ made up from: sai giới từ ¦ be made up of = được tạo thành từ ¦ made up for = bù đắp, nghĩa khác
+places = địa điểm, không hợp “public places such as trams” ¦ public technology: không phổ biến ¦ public transport = giao thông công cộng ¦ public system: không rõ nghĩa
+much dùng với danh từ không đếm được ¦ many + danh từ đếm được, nhưng đây so sánh với “less” ¦ less + danh từ không đếm được, mà traffic jams đếm được ¦ fewer traffic jams = ít tắc đường hơn (đếm được)
+city dwellers = cư dân thành phố, họ ngừng dùng xe ¦ governments = chính phủ, không hợp ¦ authorities = chính quyền ¦ researchers = nhà nghiên cứu
+solution for: ít dùng ¦ solution to many problems = giải pháp cho nhiều vấn đề ¦ solution of: sai giới từ ¦ solution in: sai giới từ
+exhibit = trưng bày ¦ design = thiết kế ¦ operate efficiently = vận hành hiệu quả ¦ impress = gây ấn tượng
+impress là động từ ¦ be impressed with = ấn tượng với (cảm xúc của người) ¦ impressive = ấn tượng (miêu tả vật) ¦ impressionable = dễ bị ảnh hưởng
+greenhouse = nhà kính, không phải thứ bị giảm ¦ heat = nhiệt ¦ effect: chung chung, không hợp ¦ carbon footprint = lượng khí thải carbon
+rush hour = giờ cao điểm, lúc tắc đường ¦ peak season = mùa cao điểm du lịch ¦ crisis = khủng hoảng ¦ pandemic = đại dịch
+`,
+Synonyms:`
+reasons = nguyên nhân, không phải “effects” ¦ impacts = tác động, cùng nghĩa với effects ¦ causes = nguyên nhân, nghĩa ngược với effects ¦ symptoms = triệu chứng, không thay được effects
+health = sức khỏe, chỉ liên quan chứ không đồng nghĩa ¦ protection = sự bảo vệ ¦ length = độ dài, chưa chỉ rõ thời gian sống ¦ life span = tuổi thọ, đồng nghĩa với longevity
+sleepy = buồn ngủ, không giải thích được việc ho nhiều ¦ unhappy = không vui ¦ healthy = khỏe mạnh, nghĩa ngược ¦ ill = ốm, đúng với “under the weather”
+accept = chấp nhận ¦ increase = tăng, trái nghĩa với thu hẹp khoảng cách ¦ widen = nới rộng, nghĩa ngược với bridge the gap ¦ shorten = rút ngắn, thu hẹp (bridge the gap)
+respect = kính trọng, đồng nghĩa với look up to ¦ see = nhìn thấy, không phải nghĩa của cụm động từ ¦ disrespect = coi thường, nghĩa ngược ¦ force = ép buộc, không hợp
+disappeared = biến mất, nghĩa ngược ¦ developed = phát triển, không phải “xuất hiện” ¦ seen = đã thấy, sai dạng và nghĩa ¦ arrived = xuất hiện, đồng nghĩa với came on the scene
+`,
+Antonyms:`
+release = thải ra, đồng nghĩa với give off ¦ absorb = hấp thụ, trái nghĩa với give off (tỏa ra) ¦ emit = phát ra, đồng nghĩa ¦ discharge = thải ra, đồng nghĩa
+as pale as a ghost = rất nhợt nhạt, giống “ốm” ¦ green around the gills = trông ốm yếu, đồng nghĩa ¦ off color = không khỏe, đồng nghĩa ¦ in the pink = rất khỏe, trái nghĩa với under the weather
+look up to = kính trọng, đồng nghĩa với respect ¦ look forwards: không đúng nghĩa trái ngược ¦ look for = tìm kiếm, không trái nghĩa ¦ look down on = coi thường, trái nghĩa với respect
+fire = sa thải, trái nghĩa với take on (thuê) ¦ hire = thuê, đồng nghĩa với take on ¦ employ = tuyển dụng, đồng nghĩa ¦ interview = phỏng vấn, chưa phải nghĩa trái ngược
+`,
+"Reading 1":`
+Đoạn 1: beginner nên chọn Hatha Yoga (basic postures at a comfortable pace).
+alleviating back, shoulder and neck pain = làm giảm đau → reducing.
+Bài nói đến flexibility, strong muscles, circulation; không nhắc đến giảm cân (weight loss).
+Đoạn 3: chỉ nâng tạ có thể tăng sức mạnh nhưng đánh đổi sự linh hoạt (reduce flexibility).
+Câu cuối: tập yoga đều đặn cải thiện tâm trạng và chức năng miễn dịch.`,
+"Reading 2":`
+Cả bài lập luận rằng khảo sát cho thấy có thể không thực sự có khoảng cách thế hệ.
+“Many of them volunteer” → them = teens (những người tin mình phải thấu hiểu).
+Đoạn 1: teens tin cha mẹ coi gia đình là ưu tiên số 1.
+Đoạn 1: thứ giấu thường chỉ là nhật ký hoặc đĩa CD vô hại.
+Đoạn 4: hầu hết thanh thiếu niên thập niên 60–70 vẫn chia sẻ giá trị cơ bản của cha mẹ.`,
+"Cloze 1":`
+take up a sport = bắt đầu chơi một môn thể thao.
+Đại từ quan hệ thay cho “those” (người) làm chủ ngữ → who.
+Câu trước nói người thích ở cùng người khác; câu này đưa lựa chọn khác → Alternatively.
+Sau “if” cần danh từ làm chủ ngữ → competition.
+an enjoyable alternative = một lựa chọn thú vị thay thế.`,
+"Cloze 2":`
+Mệnh đề quan hệ bổ nghĩa cả ý phía trước, làm chủ ngữ của “can be done” → which.
+Sau “more public” cần danh từ số nhiều: spaces.
+a model for other cities (other + danh từ số nhiều).
+Thêm một đặc điểm của thành phố → In addition.
+Cần trạng từ bổ nghĩa cho tính từ “friendly”: environmentally friendly.`,
+Writing:`
+last saw … when → haven’t seen … since (hiện tại hoàn thành + since).
+last wrote … ago → hasn’t written … for.
+The last time + QKĐ → have not + V3 + since mốc thời gian.
+went to → has been to (đã từng đến); ago → for.
+started … ago → has worked … for.
+have lived for 20 years → began living 20 years ago.
+It is better for you to → You should.
+It is a good idea for us to → We should.
+not necessary = don’t have to.
+not allowed = mustn’t.
+It is necessary for → have to.
+strictly forbidden = mustn’t.
+not a good idea → shouldn’t + V (không nên); chủ ngữ là Teenagers.
+The last time + QKĐ … → haven’t + V3 + since + mốc thời gian (March).
+Thay began … ago bằng hiện tại hoàn thành: have lived … for 10 years.
+not allowed → mustn’t (cấm); giữ nguyên use phones during the exam.
+not necessary → don’t have to (không cần thiết).
+last ate … ago → haven’t eaten … for two months.
+It is better for + người → should + V.
+strictly forbidden → mustn’t (bị cấm hoàn toàn).
+last visited … ago → haven’t visited … for five years.
+last … when + QKĐ → haven’t had … since + mệnh đề QKĐ.
+It is a good idea for + người → should + V (lời khuyên).
+last did … ago → hasn’t done … for three months.
+started … in 2015 → has done … since 2015 (since + mốc thời gian).
+It is not a good idea → shouldn’t + V (không nên).
+The last time + QKĐ … → hasn’t + V3 + since + mốc thời gian.
+became … ago → have been … for five years (become → be ở hiện tại hoàn thành).
+not allowed → mustn’t (quy định cấm).
+It is a good idea for + người → should + V (lời đề nghị).
+last travelled … ago → hasn’t travelled … for a month.
+not allowed → mustn’t (bị cấm).
+should + V nguyên mẫu; thêm “and”, mạo từ và dạng số nhiều; to-V chỉ mục đích.
+Although + mệnh đề, mệnh đề chính; thêm they, at.
+important for them; these help them + V (concentrate on).
+Thêm an, of; some students (số nhiều).
+spend too much time on + N; thêm s cho teenagers/devices.
+because of + cụm danh từ; limit their children’s…
+make + O + adj; by + V-ing.
+have an impact on; every aspect of life.
+City dwellers will stop using (stop + V-ing) để chỉ mục đích dùng to-V.
+Câu bị động tương lai will be used; trạng từ efficiently.`
+};
+D.forEach(d=>{if(E[d.t])d.e=E[d.t].trim().split("\n")});
+const L="ABCD",st=D.map(()=>({a:{}}));let cur=0;
+const $=i=>document.getElementById(i),u=s=>s.replace(/\[(.+?)\]/g,"<u>$1</u>");
+$("tabs").innerHTML=D.map((d,i)=>`<button data-i="${i}">${d.t}</button>`).join("")+`<button data-i="t">🎯 Kiểm tra 10 điểm</button>`;
+$("tabs").onclick=e=>{const b=e.target.closest("button");if(b){if(b.dataset.i=="t"){showTest();return}cur=+b.dataset.i;draw()}};
+$("reset").onclick=()=>{st[cur].a={};draw()};
+function draw(){
+ const d=D[cur],s=st[cur];$("main").hidden=false;$("test").hidden=true;
+ [...$("tabs").children].forEach((b,i)=>b.classList.toggle("on",i==cur));
+ $("rule").textContent=d.r;$("pass").innerHTML=d.p?`<div class="pas">${d.p}</div>`:"";
+ $("list").innerHTML=d.q.map((q,i)=>d.w?
+  `<div class="q"><p><span class="n">${i+1}.</span>${q[0]}</p>${d.h&&d.h[i]?`<p style="color:var(--mu);margin:0 0 6px">Từ gợi ý: <b>${d.h[i]} …</b></p>`:""}<textarea placeholder="Your answer…">${d.h&&d.h[i]?d.h[i]+" ":""}</textarea><button class="rv" data-i="${i}">Xem đáp án</button><div class="ans" id="a${i}">${q[1]}${d.e&&d.e[i]?`<div class="ex">💡 ${d.e[i]}</div>`:""}</div></div>`:
+  `<div class="q"><p><span class="n">${i+1}.</span>${u(q[0])}</p>${[1,2,3,4].map(k=>`<button class="o" data-q="${i}" data-k="${k-1}">${L[k-1]}. ${q[k]}</button>`).join("")}</div>`).join("");
+ if(!d.w)Object.keys(s.a).forEach(i=>mark(i,s.a[i]));
+ score();
+}
+function mark(i,k){
+ const c=L.indexOf(D[cur].q[i][5]);
+ const box=document.querySelector(`[data-q="${i}"]`).parentNode;
+ if(!box.querySelector(".ex")){const ok=c==k,e=D[cur].e&&D[cur].e[i]||"";
+  box.insertAdjacentHTML("beforeend",`<div class="ex ${ok?"y":"n"}"><b>${ok?"✅ Chính xác!":"❌ Chưa đúng – đáp án đúng là "+L[c]+"."}</b><br>${e.includes("¦")?e.split(" ¦ ").map((t,j)=>`<div style="margin-top:4px">${j==c?"✅":"❌"} <b>${L[j]}. ${D[cur].q[i][j+1]}</b> – ${t}</div>`).join(""):"💡 "+e}</div>`)}
+ document.querySelectorAll(`[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.k;b.disabled=true;if(j==c)b.classList.add("ok");else if(j==k)b.classList.add("no")});
+}
+function score(){
+ const d=D[cur],s=st[cur];
+ if(d.w){$("prog").textContent=d.q.length+" câu viết lại";$("sc").textContent="Tự đối chiếu đáp án mẫu";return}
+ const n=Object.keys(s.a).length,r=Object.keys(s.a).filter(i=>L.indexOf(d.q[i][5])==s.a[i]).length;
+ $("prog").textContent=`Đã làm ${n}/${d.q.length}`;
+ $("sc").textContent=`Đúng ${r}/${n} câu đã làm`+(n==d.q.length?` – tổng điểm ${(r/d.q.length*10).toFixed(1)}/10`:"");
+}
+$("list").onclick=e=>{
+ const o=e.target.closest(".o");
+ if(o){const i=o.dataset.q;st[cur].a[i]=+o.dataset.k;mark(i,+o.dataset.k);score();return}
+ const r=e.target.closest(".rv");
+ if(r){const a=$("a"+r.dataset.i);a.style.display=a.style.display=="block"?"none":"block"}
+};
+
+/* ===== KIỂM TRA NGẪU NHIÊN ===== */
+const T=$("test");let TS=null;
+const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const dd=n=>D.find(d=>d.t==n);
+const nz=t=>t.toLowerCase().replace(/\b(have|has|do|does|must|should|did) not\b/g,"$1n't").replace(/[’‘`]/g,"'").replace(/[.,!?;:]/g,"").replace(/\s+/g," ").trim();
+function mq(d,i){const q=d.q[i],c=L.indexOf(q[5]),e=(d.e&&d.e[i])||"",pe=e.includes("¦")?e.split(" ¦ "):null;
+ return{r:d.r,s:q[0],g:pe?"":e,o:sh([0,1,2,3].map(j=>({t:q[j+1],ok:j==c,x:pe?pe[j]:""})))}}
+function newTest(){
+ const G=dd("Grammar"),V=dd("Vocabulary"),W=dd("Writing"),pk=(d,n,ex=[])=>sh(d.q.map((_,i)=>i).filter(i=>!ex.includes(i))).slice(0,n).map(i=>[d,i]);
+ const SA=[...pk(dd("Synonyms"),1),...pk(dd("Antonyms"),1)];
+ const m=[...pk(G,3,[14,15,18]),...pk(V,2,[14]),...SA].map(([d,i])=>mq(d,i));
+ const w=sh([...Array(32).keys()]).slice(0,6).map(i=>({p:W.q[i][0],a:W.q[i][1],h:W.h[i]||"",e:(W.e&&W.e[i])||"",ok:false,v:""}));
+ TS={m,w,sel:{},done:false};
+}
+function showTest(){
+ $("main").hidden=true;T.hidden=false;[...$("tabs").children].forEach((b,i)=>b.classList.toggle("on",i==D.length));
+ if(!TS)TS={start:1};drawTest();scrollTo(0,0)}
+function drawTest(){
+ const x=TS;if(x.start)return drawStart();
+ T.innerHTML=`<div class="rule">🎯 Bài kiểm tra 13 câu: 7 trắc nghiệm (mỗi câu 1 điểm) + 6 câu viết lại câu (mỗi câu 0,5 điểm). Mỗi lần bấm “Đề mới” là một đề khác. Đáp án chỉ hiện sau khi nộp bài.</div>
+ <div class="rule" style="margin-top:0">👤 Họ tên: <b>${hx(x.name)}</b> &nbsp;·&nbsp; Lớp: <b>${hx(x.cls)}</b></div>
+ ${x.m.map((q,i)=>`<div class="q"><p><span class="n">${i+1}.</span>${u(q.s)}</p><p style="color:var(--mu);font-size:1rem;margin:-4px 0 4px">${q.r}</p>${q.o.map((o,k)=>`<button class="o${x.sel[i]==k?" sel":""}" data-tq="${i}" data-k="${k}" ${x.done?"disabled":""}>${L[k]}. ${o.t}</button>`).join("")}${x.done?rv(q,i):""}</div>`).join("")}
+ ${x.w.map((q,i)=>`<div class="q"><p><span class="n">${8+i}.</span>${q.p}</p>${q.h?`<p style="color:var(--mu);margin:0 0 6px">Từ gợi ý: <b>${q.h} …</b></p>`:""}<textarea data-w="${i}" placeholder="Your answer…" ${x.done?"disabled":""}>${x.done?q.v:(q.h?q.h+" ":"")}</textarea>${x.done?rw(q,i):""}</div>`).join("")}
+ <div class="sc" id="ts">${x.done?"":"Chọn đáp án rồi bấm Nộp bài"}</div>
+ <div>${x.done?"":`<button class="tb" id="sub">Nộp bài</button>`}<button class="tb g" id="nw">🔄 Học sinh tiếp theo (đề mới)</button></div>`;
+ if(x.done)tScore()}
+function rv(q,i){const k=TS.sel[i],ok=q.o[k]&&q.o[k].ok,c=q.o.findIndex(o=>o.ok);
+ return`<div class="ex ${ok?"y":"n"}"><b>${ok?"✅ Chính xác!":(k==null?"⚠️ Bạn chưa chọn":"❌ Chưa đúng")+" – đáp án đúng là "+L[c]+"."}</b>${q.g?`<br>💡 ${q.g}`:""}${q.o.map((o,j)=>o.x?`<div style="margin-top:4px">${o.ok?"✅":"❌"} <b>${L[j]}. ${o.t}</b>${j==k?" (bạn chọn)":""} – ${o.x}</div>`:"").join("")}</div>`}
+function rw(q,i){return`<div class="ex ${q.ok?"y":"n"}" id="wx${i}">${wh(q,i)}</div>`}
+function wh(q,i){return`<b>${q.ok?"✅ Đúng":"❌ Chưa khớp đáp án mẫu"}</b><br>Bài làm: ${q.v||"(bỏ trống)"}<br>Đáp án mẫu: <b>${q.a}</b>${q.e?`<br>💡 ${q.e}`:""}<br><small>Có thể có cách viết đúng khác. Nếu bài giống nghĩa và đúng ngữ pháp, bấm nút bên dưới để tính lại.</small><br><button class="tb g" data-tg="${i}">${q.ok?"Bỏ tính đúng":"Tính là đúng"}</button>`}
+function tScore(){const x=TS,m=x.m.filter((q,i)=>q.o[x.sel[i]]&&q.o[x.sel[i]].ok).length,w=x.w.filter(q=>q.ok).length*.5,f=n=>String(n).replace(".",",");
+ $("ts").innerHTML=`${hx(x.name)} (Lớp ${hx(x.cls)}) – Trắc nghiệm ${m}/7 · Viết ${f(w)}/3 · <span style="font-size:1.4rem">Tổng điểm ${f(m+w)}/10</span>`}
+const hx=t=>String(t||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function drawStart(){
+ T.innerHTML=`<div class="q st"><h2 style="margin:0 0 4px;font-size:1.4rem">🎯 Bài kiểm tra – English 11</h2>
+ <p style="color:var(--mu);margin:0 0 14px">7 câu trắc nghiệm + 6 câu viết lại câu · Tổng 10 điểm</p>
+ <label for="nm"><b>Họ và tên</b></label><input class="nm" id="nm" maxlength="60" autocomplete="off" placeholder="Ví dụ: Nguyễn Văn An">
+ <label for="cl"><b>Lớp</b></label><input class="nm" id="cl" maxlength="12" autocomplete="off" placeholder="Ví dụ: 11A3">
+ <div id="er" style="color:var(--no);min-height:1.5em;margin-bottom:6px"></div>
+ <button class="tb" id="go" style="width:100%">Bắt đầu làm bài ▶</button>
+ <p style="color:var(--mu);margin:12px 0 0">Mỗi học sinh nhận một đề khác nhau. Đáp án chỉ hiện sau khi nộp bài.</p></div>`;
+ setTimeout(()=>{const n=$("nm");n&&n.focus()},50)}
+function startGo(){const n=$("nm").value.trim(),c=$("cl").value.trim();
+ if(!n||!c){$("er").textContent="Vui lòng nhập đầy đủ họ tên và lớp.";(!n?$("nm"):$("cl")).focus();return}
+ newTest();TS.name=n;TS.cls=c;drawTest();scrollTo(0,0)}
+T.onkeydown=e=>{if(e.key=="Enter"&&TS&&TS.start&&e.target.tagName=="INPUT"){e.preventDefault();e.target.id=="nm"?$("cl").focus():startGo()}};
+T.onclick=e=>{
+ if(e.target.id=="go"){startGo();return}
+ const o=e.target.closest(".o");
+ if(o&&!TS.done){const i=+o.dataset.tq;TS.sel[i]=+o.dataset.k;T.querySelectorAll(`[data-tq="${i}"]`).forEach(b=>b.classList.toggle("sel",b==o));return}
+ if(e.target.id=="sub"){
+  const un=TS.m.filter((q,i)=>TS.sel[i]==null).length;
+  if(un&&!confirm(`Còn ${un} câu trắc nghiệm chưa chọn. Vẫn nộp bài?`))return;
+  T.querySelectorAll("[data-w]").forEach(t=>{const q=TS.w[+t.dataset.w];q.v=t.value.trim();q.ok=nz(q.v)==nz(q.a)});
+  TS.done=true;drawTest();scrollTo(0,0);return}
+ if(e.target.id=="nw"){if(!TS.done&&!confirm("Quay lại màn hình nhập tên sẽ xóa bài đang làm. Tiếp tục?"))return;TS={start:1};drawTest();scrollTo(0,0);return}
+ const g=e.target.closest("[data-tg]");
+ if(g){const i=+g.dataset.tg,q=TS.w[i];q.ok=!q.ok;const b=$("wx"+i);b.className="ex "+(q.ok?"y":"n");b.innerHTML=wh(q,i);tScore()}
+};
+draw();
+</script></body></html>
